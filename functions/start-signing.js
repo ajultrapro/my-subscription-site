@@ -20,7 +20,7 @@ exports.handler = async function(event, context) {
                 "expire_in_days": 1,
                 // --- ⚠️ ACTION REQUIRED ---
                 // We will update this URL after deploying to Netlify
-                "post_sign_redirect_uri": "https://YOUR-SITE-NAME.netlify.app/payment.html"
+                "post_sign_redirect_uri": "https://my-subscription-site.netlify.app/"
                 // --- ⚠️ ACTION REQUIRED ---
             })
         });
@@ -32,4 +32,5 @@ exports.handler = async function(event, context) {
     } catch (error) {
         return { statusCode: 500, body: JSON.stringify({ error: error.message }) };
     }
+
 };
