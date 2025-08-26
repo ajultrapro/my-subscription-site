@@ -3,7 +3,7 @@ exports.handler = async function(event, context) {
 
     // --- ⚠️ ACTION REQUIRED ---
     // PASTE YOUR DIGIO TEMPLATE ID HERE
-    const TEMPLATE_ID = 'YOUR_TEMPLATE_ID_HERE';
+    const TEMPLATE_ID = 'TMP250714094332165DFWH8RGYRC8WYX';
     // --- ⚠️ ACTION REQUIRED ---
 
     const DIGIO_API_URL = 'https://api.digio.in/v2';
@@ -34,3 +34,4 @@ exports.handler = async function(event, context) {
     }
 
 };
+
