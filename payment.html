@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Complete Your Payment</title>
+</head>
+<body>
+    <h1>Agreement Signed Successfully!</h1>
+    <p>Please complete the payment to activate your subscription.</p>
+    <button id="pay-button">Pay Now</button>
+    <p id="message"></p>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        document.getElementById('pay-button').addEventListener('click', async () => {
+            document.getElementById('message').innerText = 'Preparing your payment...';
+            
+            const response = await fetch('/.netlify/functions/create-payment');
+            const data = await response.json();
+
+            if (!data.order_id) {
+                document.getElementById('message').innerText = 'Could not create payment order.';
+                return;
+            }
+
+            const options = {
+                "key": data.razorpay_key_id,
+                "amount": data.amount,
+                "currency": "INR",
+                "name": "Your Company Name",
+                "description": "Subscription Payment",
+                "order_id": data.order_id,
+                "handler": function (response){
+                    window.location.href = '/thank-you.html';
+                },
+            };
+            const rzp = new Razorpay(options);
+            rzp.open();
+        });
+    </script>
+</body>
+</html>
